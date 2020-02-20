@@ -1,0 +1,87 @@
+epoch_2_Wed_Jan__1_22:15:32_2020_100000.0_10000000000.0.model -> composition_vii.model
+epoch_5_Tue_Dec_31_06:03:07_2019_100000.0_10000000000.0.model -> to2ra2to.model
+
+
+ 
+ 1643  python neural_style/lily_neural_style.py eval --cuda 1  
+ --model ./saved_models/epoch_2_Sun_Dec_29_19\:40\:58_2019_100000.0_10000000000.0.model  
+ --content-folder ./images/output-images/realvsvirtual_4_tote/  
+ --output-folder ./images/output-images/realvsvirtual_tote2tote/
+ 
+ 1644  python neural_style/lily_neural_style.py eval --cuda 1  
+ --model ./saved_models/rain_princess.pth  
+ --content-folder ./images/output-images/realvsvirtual_4_tote/  
+ --output-folder ./images/output-images/realvsvirtual_tote2rain/
+ 
+ 1645  python neural_style/lily_neural_style.py eval --cuda 1  
+ --model ./saved_models/tote.model  
+ --content-folder ./images/output-images/realvsvirtual_tote2rain/  
+ --output-folder ./images/output-images/realvsvirtual_tote2rain2tote/
+ 
+ 
+  1650  python neural_style/neural_style.py train 
+ --dataset ./images/cocotrain/ 
+ --style-image ./images/style-images/to2ra2to000001.jpg 
+ --save-model-dir ./saved_models/to2ra2to/ 
+ --checkpoint-model-dir ./saved_models/to2ra2to/  
+ --epochs 5   
+ --checkpoint-interval 10000
+ ==========> epoch_5_Tue_Dec_31_06:03:07_2019_100000.0_10000000000.0.model -> to2ra2to.model
+
+  1651  python neural_style/lily_neural_style.py eval   
+  --model ./saved_models/to2ra2to/epoch_5_Tue_Dec_31_06\:03\:07_2019_100000.0_10000000000.0.model  
+  --content-folder ./images/content-images/realvsvirtual/  
+  --output-folder ./images/output-images/realvsvirtual_tote2rain2tote2_1231/
+ 
+  1654  python neural_style/lily_neural_style.py eval   
+  --model ./saved_models/to2ra2to/epoch_5_Tue_Dec_31_06\:03\:07_2019_100000.0_10000000000.0.model  
+  --content-image ./images/style-images/test/000009.jpg  
+  --output-image ./images/output-images/tote_to2ra2to.jpg
+
+ 1657  python neural_style/lily_neural_style.py eval   
+ --model ./saved_models/to2ra2to/epoch_5_Tue_Dec_31_06\:03\:07_2019_100000.0_10000000000.0.model  
+ --content-folder ./images/content-images/virtual_data/  
+ --output-folder ./images/output-images/1231_20obj_to2ra2to/
+
+  1658  python neural_style/neural_style.py train 
+ --dataset ./images/cocotrain/ 
+ --style-image ./images/style-images/composition_vii.jpg 
+ --save-model-dir ./saved_models/  
+ --epochs 2 
+  ==========> epoch_2_Wed_Jan__1_22:15:32_2020_100000.0_10000000000.0.model -> composition_vii.model
+ 
+
+1745  python neural_style/lily_neural_style.py  eval 
+ --content-image ./images/content-images/test/6_original.png 
+ --output-image ./images/output-images/6_original.png  
+ --model ./saved_models/to2ra2to/epoch_5_Tue_Dec_31_06\:03\:07_2019_100000.0_10000000000.0.model 
+
+ 1746  python neural_style/lily_neural_style.py  eval 
+ --content-image ./images/output-images/6_original.png 
+ --output-image ./images/output-images/6_original_2.png 
+ --model ./saved_models/epoch_2_Wed_Jan__1_22\:15\:32_2020_100000.0_10000000000.0.model 
+
+ 1747  python neural_style/lily_neural_style.py  eval 
+ --content-image ./images/content-images/test/1_original.png 
+ --output-image ./images/output-images/1_original.png  
+ --model ./saved_models/to2ra2to/epoch_5_Tue_Dec_31_06\:03\:07_2019_100000.0_10000000000.0.model 
+
+ 1748  python neural_style/lily_neural_style.py  eval 
+ --content-image ./images/output-images/1_original.png
+ --output-image ./images/output-images/1_original_2.png    
+ --model ./saved_models/epoch_2_Wed_Jan__1_22\:15\:32_2020_100000.0_10000000000.0.model  
+
+ 1840  python neural_style/lily_neural_style.py  eval 
+ --content-image ./images/output-images/1231_20obj_to2ra2to/3m/Scene0/0_original.png
+ --output-image ./images/output-images/test1.png   
+ --model ./saved_models/epoch_2_Wed_Jan__1_22\:15\:32_2020_100000.0_10000000000.0.model
+
+  1857  python neural_style/lily_neural_style.py eval 
+  --content-folder ./images/content-images/realvsvirtual/ 
+  --output-folder ./images/output-images/0106test/ 
+  --model ./saved_models/epoch_2_Wed_Jan__1_22\:15\:32_2020_100000.0_10000000000.0.model 
+
+ 1858  python neural_style/lily_neural_style.py eval 
+ --content-folder ./images/output-images/1231_20obj_to2ra2to/  
+ --output-folder ./images/output-images/0106_20obj_1231+0101/ 
+ --model ./saved_models/epoch_2_Wed_Jan__1_22\:15\:32_2020_100000.0_10000000000.0.model 
