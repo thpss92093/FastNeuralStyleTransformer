@@ -238,6 +238,9 @@ def main():
     if args.subcommand == "train":
         check_paths(args)
         train(args)
+        fp = open(args.save_model_dir+"info.txt", "a")
+        print >> fp, args
+        fp.close()
     elif args.content_folder is None:
         print("Use single image.")
         stylize(args)
@@ -255,8 +258,9 @@ def main():
                     if not os.path.exists(args.output_image[:-len(f)]):
                         os.makedirs(args.output_image[:-len(f)])
                     stylize(args)
-
-
+        fp = open(args.output_folder+"info.txt", "a")
+        print >> fp, args
+        fp.close()
 
 
 if __name__ == "__main__":
