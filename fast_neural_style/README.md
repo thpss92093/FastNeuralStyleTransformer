@@ -14,9 +14,22 @@ The program is written in Python, and uses [pytorch](http://pytorch.org/), [scip
 
 ## Usage
 Stylize image
-```
+
+single image:
+```bash
 python neural_style/neural_style.py eval --content-image </path/to/content/image> --model </path/to/saved/model> --output-image </path/to/output/image> --cuda 0
 ```
+```bash
+python neural_style/lily_neural_style.py  eval --output-image ./images/output-images/output.png --content-image ./images/output-images/content.png --cuda 1 --model ./saved_models/XXX.model
+```
+image folder:
+```bash
+python neural_style/lily_neural_style.py eval --content-folder </path/to/content/image/folder/> --model </path/to/saved/model> --output-folder </path/to/output/image/folder/> --cuda 1
+```
+```bash
+python neural_style/lily_neural_style.py eval --content-folder ./images/output-images/XXX/  --output-folder ./images/output-images/XXX/ --model ./saved_models/XXX.model --cuda 1
+```
+
 * `--content-image`: path to content image you want to stylize.
 * `--model`: saved model to be used for stylizing the image (eg: `mosaic.pth`)
 * `--output-image`: path for saving the output image.
@@ -26,6 +39,12 @@ python neural_style/neural_style.py eval --content-image </path/to/content/image
 Train model
 ```bash
 python neural_style/neural_style.py train --dataset </path/to/train-dataset> --style-image </path/to/style/image> --save-model-dir </path/to/save-model/folder> --epochs 2 --cuda 1
+```
+```bash
+python neural_style/neural_style.py train --dataset </path/to/train-dataset> --style-image </path/to/style/image> --save-model-dir </path/to/save-model/folder> --checkpoint-model-dir </path/to/checkpoint-model/folder> --epochs 2 --cuda 1
+```
+```bash
+python neural_style/neural_style.py train --dataset ./images/cocotrain/ --style-image ./images/style-images/XXX.jpg --save-model-dir ./saved_models/ --checkpoint-model-dir ./saved_models/  --epochs 2 --cuda 1  --checkpoint-interval 10000
 ```
 
 There are several command line arguments, the important ones are listed below
